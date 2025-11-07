@@ -13,6 +13,17 @@ type ImageState = {
   };
 } | null;
 
+const promptSuggestions = [
+  'a white t-shirt on a hanger',
+  'a black coffee mug on a wooden table',
+  'a canvas tote bag with neutral colors',
+  'a stainless steel water bottle',
+  'a baseball cap on a clean background',
+  'a dark grey hoodie folded neatly',
+  'a simple smartphone case',
+  'a spiral notebook with a pen beside it',
+];
+
 const ImageDisplay: React.FC<{ title: string; imageSrc: string | null; isLoading: boolean }> = ({ title, imageSrc, isLoading }) => (
   <div className="w-full aspect-square bg-dark-card rounded-lg flex items-center justify-center p-4 shadow-lg border border-dark-border">
     {isLoading ? (
@@ -150,6 +161,20 @@ export default function App() {
                       onChange={(e) => setMockupPrompt(e.target.value)}
                       placeholder="e.g., a black coffee mug on a wooden table"
                     />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-medium-text mb-3">Or try one of these:</p>
+                    <div className="flex flex-wrap gap-2">
+                        {promptSuggestions.map((prompt) => (
+                            <button
+                                key={prompt}
+                                onClick={() => setMockupPrompt(prompt)}
+                                className="bg-dark-input hover:bg-dark-border text-light-text text-xs font-medium py-2 px-3 rounded-full transition duration-200"
+                            >
+                                {prompt}
+                            </button>
+                        ))}
+                    </div>
                   </div>
                   <button
                     onClick={handleGenerateMockup}
