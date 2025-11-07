@@ -1,0 +1,5 @@
+{
+  "name": "Product Mockup Generator",
+  "description": "Generate product mockups for items like mugs and t-shirts, then upload your logo and use AI to place it on the mockup.",
+  "requestFramePermissions": []
+}
